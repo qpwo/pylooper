@@ -8,7 +8,6 @@ This is a more bare-bones substitute to looping over yourself in audacity.
 3. In a terminal, enter `python new.py`.
 
 ###How to use interface
-
 ![screenshot](screenshot.png)
 
 There are 3 types of things you can do in the main loop:
@@ -38,12 +37,12 @@ There are 3 types of things you can do in the main loop:
 
  * **- : decrecordtime** Next time you edit/record a sound, the record time will be 1 second shorter.
 
-* **| : fillfilepathsfromfolder** In the working directory, there is a folder `s/` that contains all the sounds you recorded. When `|` is pressed, all the registries are filled with the files from that folder. E.g. `s/t.wav` would now play when you pressed `t` in edit mode.
+ * **| : fillfilepathsfromfolder** In the working directory, there is a folder `s/` that contains all the sounds you recorded. When `|` is pressed, all the registries are filled with the files from that folder. E.g. `s/t.wav` would now play when you pressed `t` in edit mode.
 
-* **{ : playall** plays all sounds currently stored in a registry. Prompts you when to play the next one.
+ * **{ : playall** plays all sounds currently stored in a registry. Prompts you when to play the next one.
 
-* **} : stopall** stops all currently looping or playing sounds
+ * **} : stopall** stops all currently looping or playing sounds
 
-* **< : updatesounds** like fillfilepathsfromfolder, but only operates on currently-used registries. _This description may be completely wrong._
+ * **< : updatesounds** like fillfilepathsfromfolder, but only operates on currently-used registries. _This description may be completely wrong._
 
 The default `recordtime` is 5 seconds.
