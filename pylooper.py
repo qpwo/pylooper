@@ -4,7 +4,7 @@ import os
 from record import record
 from getch import getch
 
-workingdir = "/home/jane/python/sound/"
+workingdir = os.getcwd() + '/'
 
 pygame.mixer.pre_init(44100, -16, 2, 2048) # setup mixer to avoid sound lag
 pygame.mixer.init()
@@ -62,15 +62,13 @@ def playall():
 def stopall():
     pygame.mixer.fadeout(1000)
 
-def fillfilepathsfromfolder():
+def fillsoundsfromfolder():
     for wav in os.listdir(workingdir + "s"):
         if ".wav" not in wav:
             continue
         name = wav[:wav.find('.')]
-        filepaths[name] = workingdir + "s/" + name + ".wav"
-
-def updatesounds():
-    for (name, filepath) in filepaths.iteritems():
+        filepath = workingdir + "s/" + name + ".wav"
+        filepaths[name] = filepath
         sounds[name] = pygame.mixer.Sound(filepath)
 
 modes =   {'E' : edit,
@@ -85,8 +83,7 @@ actions = {'+' : increcordtime,
            '-' : decrecordtime,
            '{' : playall,
            '}' : stopall,
-           '|' : fillfilepathsfromfolder,
-           '<' : updatesounds}
+           '|' : fillsoundsfromfolder}
 
 def pprint(dictt):
     for key, func in dictt.iteritems():
