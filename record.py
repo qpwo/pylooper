@@ -8,8 +8,8 @@ import pyaudio
 import wave
 import sys
 
-def record(filepath, time):
 
+def record(filepath, time):
     CHUNK = 1024
     FORMAT = pyaudio.paInt16
     CHANNELS = 2
@@ -17,16 +17,14 @@ def record(filepath, time):
     RECORD_SECONDS = time
     WAVE_OUTPUT_FILENAME = filepath
 
-    if sys.platform == 'darwin':
+    if sys.platform == "darwin":
         CHANNELS = 1
 
     p = pyaudio.PyAudio()
 
-    stream = p.open(format=FORMAT,
-                    channels=CHANNELS,
-                    rate=RATE,
-                    input=True,
-                    frames_per_buffer=CHUNK)
+    stream = p.open(
+        format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK
+    )
 
     print("* recording")
 
@@ -42,10 +40,9 @@ def record(filepath, time):
     stream.close()
     p.terminate()
 
-    wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
+    wf = wave.open(WAVE_OUTPUT_FILENAME, "wb")
     wf.setnchannels(CHANNELS)
     wf.setsampwidth(p.get_sample_size(FORMAT))
     wf.setframerate(RATE)
-    wf.writeframes(b''.join(frames))
+    wf.writeframes(b"".join(frames))
     wf.close()
-
